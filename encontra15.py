@@ -67,11 +67,13 @@ def main(names, pdf_files):
     return df
 
 # Interface do Streamlit
-st.title("Encontra aluno(s). Versão 1.5 - Agora com Upload de CSV 📂")
+st.title("Encontra aluno(s). Versão 1.5 - Com Upload de CSV ou Inserção de Nomes na Caixa de Texto 📂")
+st.title("Scaneamento via OCR em PDF que sejam imagens")
+
 st.write("Faça upload de um arquivo CSV com os nomes dos alunos ou cole manualmente.")
 
 # Upload do CSV com a lista de nomes
-csv_file = st.file_uploader("📂 Faça upload de um arquivo CSV com os nomes (coluna única, sem cabeçalho)", type="csv")
+csv_file = st.file_uploader("📂 Faça upload de um arquivo CSV com os nomes", type="csv")
 
 # Se um CSV for carregado, extrair os nomes dele
 if csv_file:
@@ -97,7 +99,7 @@ if st.button("🔍 Analisar PDFs"):
             if resultados.empty:
                 st.write("Nenhum nome foi encontrado nos PDFs.")
             else:
-                st.write("📋 **Resultados: Alunos encontrados!**")
+                st.write("📋 **Resultados: Alunos encontrados**")
                 st.dataframe(resultados)
 
                 # Download CSV
